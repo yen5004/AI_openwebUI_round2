@@ -1,0 +1,14 @@
+services:
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:v0.6.10
+    container_name: openwebui
+    ports:
+      - "8080:8080"  # Web UI available at http://localhost:8080
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    volumes:
+      - openwebui_data:/app/backend/data
+    restart: unless-stopped
+
+volumes:
+  openwebui_data:
